@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nodexp"
+version = "0.1.0"
+description = "Node.js and Python in one process, one event loop, one heap."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["nodejs", "interop", "runtime", "polyglot"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: JavaScript",
+  "License :: OSI Approved :: MIT License",
+]
+
+[tool.setuptools]
+packages = ["nodexp"]
