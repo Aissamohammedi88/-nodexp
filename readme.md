@@ -1,60 +1,51 @@
-# Ionicons
+# ms
 
+[![Build Status](https://travis-ci.org/zeit/ms.svg?branch=master)](https://travis-ci.org/zeit/ms)
+[![Slack Channel](http://zeit-slackin.now.sh/badge.svg)](https://zeit.chat/)
 
-The premium icon font for [Ionic](http://ionicframework.com/). Designed by [@benjsperry](https://twitter.com/benjsperry).
+Use this package to easily convert various time formats to milliseconds.
 
-Note: All brand icons are trademarks of their respective owners. The use of these trademarks does not indicate endorsement of the trademark holder by Drifty, nor vice versa.
+## Examples
 
-Visit [ionicons.com](http://ionicons.com) and  check out the search feature, which has keywords identifying common icon names and styles. For example, if you search for “arrow” we call up every icon that could possibly be used as an arrow. We’ve also included each icon’s class name for easy copy/pasting when you’re developing!
+```js
+ms('2 days')  // 172800000
+ms('1d')      // 86400000
+ms('10h')     // 36000000
+ms('2.5 hrs') // 9000000
+ms('2h')      // 7200000
+ms('1m')      // 60000
+ms('5s')      // 5000
+ms('1y')      // 31557600000
+ms('100')     // 100
+```
 
-We intend for this icon pack to be used with [Ionic](http://ionicframework.com/), but it’s by no means limited to it. Use them wherever you see fit, personal or commercial. They are free to use and licensed under [MIT](http://opensource.org/licenses/MIT).
+### Convert from milliseconds
 
+```js
+ms(60000)             // "1m"
+ms(2 * 60000)         // "2m"
+ms(ms('10 hours'))    // "10h"
+```
 
-## Getting Started
+### Time format written-out
 
- 1. Download and extract the font pack
- 2. Copy the `ionicons.css` to your project
- 3. Copy the `fonts` folder to your project
- 4. Ensure the font urls within `ionicons.css` properly reference the `fonts` path within your project.
- 5. Include a reference to the `ionicons.css` file from every webpage you need to use it.
+```js
+ms(60000, { long: true })             // "1 minute"
+ms(2 * 60000, { long: true })         // "2 minutes"
+ms(ms('10 hours'), { long: true })    // "10 hours"
+```
 
-Or install with [component](https://github.com/component/component):
+## Features
 
-    $ component install driftyco/ionicons
-    
-Or perhaps you're known to use [bower](http://bower.io/)?
-   
-    $ bower install ionicons
+- Works both in [node](https://nodejs.org) and in the browser.
+- If a number is supplied to `ms`, a string with a unit is returned.
+- If a string that contains the number is supplied, it returns it as a number (e.g.: it returns `100` for `'100'`).
+- If you pass a string with a number and a valid unit, the number of equivalent ms is returned.
 
+## Caught a bug?
 
-## HTML Example
+1. [Fork](https://help.github.com/articles/fork-a-repo/) this repository to your own GitHub account and then [clone](https://help.github.com/articles/cloning-a-repository/) it to your local device
+2. Link the package to the global module directory: `npm link`
+3. Within the module you want to test your local development instance of ms, just link it to the dependencies: `npm link ms`. Instead of the default one from npm, node will now use your clone of ms!
 
-You can use [ionicons.com](http://ionicons.com) to easily find the icon you want to use. Once you've copied the desired icon's CSS classname, simply add the `icon` and icon's classname, such as `ion-home` to an HTML element.
-
-    <i class="icon ion-home"></i>
-
-
-## Build Instructions
-
-This repo already comes with all the files built and ready to go, but can also build the fonts from the source. Requires Python, FontForge and Sass:
-
-1) Install FontForge, which is the program that creates the font files from the SVG files:
-
-    $ brew install fontforge ttfautohint
-
-2) Install [Sass](http://sass-lang.com/)
-
-    $ gem install sass
-
-3) Add or subtract files from the `src/` folder you'd like to be apart of the font files.
-
-4) Modify any settings in the `builder/manifest.json` file. You can change the name of the font-family and CSS classname prefix.
-
-5) Run the build command:
-
-    python ./builder/generate.py
-
-
-## License
-
-Ionicons is licensed under the [MIT license](http://opensource.org/licenses/MIT).
+As always, you can run the tests using: `npm test`
