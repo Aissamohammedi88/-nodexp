@@ -1,12 +1,22 @@
-/*!
- * mime-db
- * Copyright(c) 2014 Jonathan Ong
- * Copyright(c) 2015-2022 Douglas Christopher Wilson
- * MIT Licensed
- */
+"use strict";
 
-/**
- * Module exports.
- */
+// Update this array if you add/rename/remove files in this directory.
+// We support Browserify by skipping automatic module discovery and requiring modules directly.
+var modules = [
+    require("./internal"),
+    require("./utf16"),
+    require("./utf7"),
+    require("./sbcs-codec"),
+    require("./sbcs-data"),
+    require("./sbcs-data-generated"),
+    require("./dbcs-codec"),
+    require("./dbcs-data"),
+];
 
-module.exports = require('./db.json')
+// Put all encoding/alias/codec definitions to single object and export it. 
+for (var i = 0; i < modules.length; i++) {
+    var module = modules[i];
+    for (var enc in module)
+        if (Object.prototype.hasOwnProperty.call(module, enc))
+            exports[enc] = module[enc];
+}

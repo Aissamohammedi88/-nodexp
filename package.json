@@ -1,44 +1,46 @@
 {
-  "author": {
-    "name": "Robert Kieffer",
-    "url": "http://github.com/broofa",
-    "email": "robert@broofa.com"
-  },
-  "bin": {
-    "mime": "cli.js"
-  },
-  "engines": {
-    "node": ">=4"
-  },
-  "contributors": [
-    {
-      "name": "Benjamin Thomas",
-      "url": "http://github.com/bentomas",
-      "email": "benjamin@benjaminthomas.org"
+    "name": "iconv-lite",
+    "description": "Convert character encodings in pure javascript.",
+    "version": "0.4.24",
+    "license": "MIT",
+    "keywords": [
+        "iconv",
+        "convert",
+        "charset",
+        "icu"
+    ],
+    "author": "Alexander Shtuchkin <ashtuchkin@gmail.com>",
+    "main": "./lib/index.js",
+    "typings": "./lib/index.d.ts",
+    "homepage": "https://github.com/ashtuchkin/iconv-lite",
+    "bugs": "https://github.com/ashtuchkin/iconv-lite/issues",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/ashtuchkin/iconv-lite.git"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "scripts": {
+        "coverage": "istanbul cover _mocha -- --grep .",
+        "coverage-open": "open coverage/lcov-report/index.html",
+        "test": "mocha --reporter spec --grep ."
+    },
+    "browser": {
+        "./lib/extend-node": false,
+        "./lib/streams": false
+    },
+    "devDependencies": {
+        "mocha": "^3.1.0",
+        "request": "~2.87.0",
+        "unorm": "*",
+        "errto": "*",
+        "async": "*",
+        "istanbul": "*",
+        "semver": "*",
+        "iconv": "*"
+    },
+    "dependencies": {
+        "safer-buffer": ">= 2.1.2 < 3"
     }
-  ],
-  "description": "A comprehensive library for mime-type mapping",
-  "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
-    "github-release-notes": "0.13.1",
-    "mime-db": "1.31.0",
-    "mime-score": "1.1.0"
-  },
-  "scripts": {
-    "prepare": "node src/build.js",
-    "changelog": "gren changelog --tags=all --generate --override",
-    "test": "node src/test.js"
-  },
-  "keywords": [
-    "util",
-    "mime"
-  ],
-  "main": "mime.js",
-  "name": "mime",
-  "repository": {
-    "url": "https://github.com/broofa/node-mime",
-    "type": "git"
-  },
-  "version": "1.6.0"
 }
